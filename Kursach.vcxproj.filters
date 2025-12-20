@@ -27,4 +27,14 @@
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.md">
+      <Filter>Исходные файлы</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Блок_схема.png">
+      <Filter>Исходные файлы</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

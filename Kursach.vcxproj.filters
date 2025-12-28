@@ -33,7 +33,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Блок_схема.png">
+    <Image Include="Структура.png">
+      <Filter>Исходные файлы</Filter>
+    </Image>
+    <Image Include="png\ot.png">
       <Filter>Исходные файлы</Filter>
     </Image>
   </ItemGroup>

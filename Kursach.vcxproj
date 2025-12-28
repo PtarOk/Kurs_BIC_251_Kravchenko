@@ -133,7 +133,8 @@
     <None Include="readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Блок_схема.png" />
+    <Image Include="png\ot.png" />
+    <Image Include="Структура.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

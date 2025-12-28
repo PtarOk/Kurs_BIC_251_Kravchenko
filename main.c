@@ -8,6 +8,7 @@
 #include <locale.h>
 #include <stdlib.h>
 #include <time.h>
+#include <windows.h>
 #include "Check_rule.h"
 
 #define N 9       // строка
@@ -43,7 +44,10 @@ int file_out(FILE* file_txt, const int* field_C_R, int size);
 
 int main()
 {
-	setlocale(LC_ALL, "RUS");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	setlocale(LC_ALL, "Russian");
+	system("chcp 1251");
 
 	int task = 0;        
 	int size = N;        

@@ -45,22 +45,22 @@ int main()
 {
 	setlocale(LC_ALL, "RUS");
 
-	int task = 0;        // для хранения выбора пользователя
-	int size = N;        // размер массива
-	int field_С_R[2][N]; // для записи полей задания
-	char arr[N][N];      // массив для генерации
-	char arr_user[N][N]; // массив для игрока
-	int amount_r[N];     // для хранения колисчества точек в строке
-	int amount_c[N];     // для хранения колисчества точек в столбце
-	bool check = true;   // для самой игры (т е цикл с вводом от пользователя)
-	int row_user = 0, col_user = 0; // для вводимых символов userа
-	char mode = T, mode_check; // по умолчанию символ заполнения ячейки 
-	char pusto;          // для сброса невернно введённых данных пользователя
+	int task = 0;        
+	int size = N;        
+	int field_С_R[2][N]; 
+	char arr[N][N];      
+	char arr_user[N][N]; 
+	int amount_r[N];     
+	int amount_c[N];     
+	bool check = true;   
+	int row_user = 0, col_user = 0; 
+	char mode = T, mode_check; 
+	char pusto;          
 
-	FILE* file_txt; // для создания файла с полями
-	char save = 'y';      // выбор userа сохранить ли файл
+	FILE* file_txt; 
+	char save = 'y';      
 
-	puts("     ===== Gappy =====");
+	puts("     ===== Gappy ====="); // приветствие пользователя
 	puts("Дорогой пользователь, Вам предлагается решить");
 	puts("логическоу головоломку Промежутки (Gappy).");
 	puts("Сгенерировать поле и начать играть?  (1)");
@@ -70,7 +70,7 @@ int main()
 	{
 		if (scanf("%d", &task) == 1 && (task == 1 || task == 2))
 		{
-			system("cls"); // отчистка терминала
+			system("cls"); 
 			break;
 		}
 		else
@@ -79,8 +79,8 @@ int main()
 		}
 	} 
 
-	if (task == 2)
-	{
+	if (task == 2) // вывод правил игры
+	{ 
 		puts("Правила игры:");
 		puts("1. Каждая строка и каждый столбец содержат две чёрные ячейки.");
 		puts("2. Каждая заполненная ячейка не должна иметь \"соседей\", то есть других заполненных клеток в радиусе одной клетки");
@@ -94,7 +94,7 @@ int main()
 		puts("Закрыть программу? (2)");
 		while (true)
 		{
-			task = -1; // сброс прошлого выбора
+			task = -1; 
 			if (scanf("%d", &task) == 1 && (task == 1 || task == 2)) {
 				system("cls");
 				if (task == 2) return 0;
@@ -105,7 +105,7 @@ int main()
 		}
 	}
 
-	while (!rand_generation(arr, size, amount_r, amount_c));// много попыток сгенерировать массив с точками по правилами "игры"
+	while (!rand_generation(arr, size, amount_r, amount_c)); // много попыток сгенерировать массив с точками по правилами "игры"
 	
 	if (completion_filed(arr, size, field_С_R)); // заполнение полей с промежутками в соответствии с заполненным массивом
 	else 
@@ -114,7 +114,7 @@ int main()
 		return -1;
 	}
 
-	if(clear_arr_user(arr_user, size)); // заполнение массива пользователя пустыми ячейками Not_t
+	if(clear_arr_user(arr_user, size)); 
 	else
 	{
 		puts("Произошла ошибка :(");
@@ -123,26 +123,24 @@ int main()
 
 	while (check) {    // вывод, пока пользователь не закроет программу
 
-		system("cls"); // отчистка консоли
+		system("cls"); 
 
 		row_user = -1;
-		col_user = -1; // на всякий удаляем ранее введённые данные строки и столбца от пользователя
+		col_user = -1; 
 
-		//output(arr, size, field_С_R);    // для проверки (чтобы быстро заполнить массив игрока)
-
-		if(output(arr_user, size, field_С_R)); // выводим интерфейс в консоль
+		if(output(arr_user, size, field_С_R)); 
 		else
 		{
 			puts("Произошла ошибка :(");
 			return -3;
 		}
 
-		puts(" Введите координаты ячейки (строки и столбца) (x y)");
+		puts(" Введите координаты ячейки (строки и столбца) (x y)"); 
 		printf(" Если желаете изменить вводимый символ (\"%d\" - %c) или (\"%d\" - %c) // сейчас %c\n", Not_T, Not_T, T, T, mode);
 		printf(" Если желаете отчистить игровое поле от точек, то введите %d \n", CLEAR);
 		printf(" Если желаете проверить прошли ли Вы игру, то введите %d \n", CHECK);
 
-		while (true) // цикл для считывания воода от user
+		while (true) // ввод от пользователя
 		{
 			if (scanf("%d", &row_user) == 1) // считка первого числа/цифры
 			{
@@ -216,7 +214,7 @@ int main()
 			}
 		}
 
-		if (row_user > 0 && row_user < size + 1 && col_user > 0 && col_user < size + 1) { // если всё гуд - записать в массив значение
+		if (row_user > 0 && row_user < size + 1 && col_user > 0 && col_user < size + 1) { // записать в массив значение
 			arr_user[row_user - 1][col_user - 1] = mode;
 		}
 		else puts(" Ошибка ввода");
@@ -231,7 +229,7 @@ int clear_arr_user(char* arr_user, int size)
 	{
 		for (int j = 0; j < size; j++)
 		{
-			arr_user[i * size + j] = Not_T; // заполняем всё пустыми символами
+			arr_user[i * size + j] = Not_T; 
 		}
 	}
 	return 1;

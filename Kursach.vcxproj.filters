@@ -39,5 +39,8 @@
     <Image Include="png\ot.png">
       <Filter>Исходные файлы</Filter>
     </Image>
+    <Image Include="png\fil.png">
+      <Filter>Исходные файлы</Filter>
+    </Image>
   </ItemGroup>
 </Project>

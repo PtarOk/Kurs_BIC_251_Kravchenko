@@ -133,6 +133,7 @@
     <None Include="readme.md" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="png\fil.png" />
     <Image Include="png\ot.png" />
     <Image Include="Структура.png" />
   </ItemGroup>
